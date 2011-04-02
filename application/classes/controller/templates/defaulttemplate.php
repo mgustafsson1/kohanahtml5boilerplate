@@ -19,8 +19,7 @@ class Controller_Templates_Defaulttemplate extends Controller_Template{
 	* controllers if they need to be modified.
 	*/
 	public function before(){
-      echo $template;
-      exit;
+      
 		parent::before();		
 		        
   	    if ($this->auto_render){
@@ -36,7 +35,7 @@ class Controller_Templates_Defaulttemplate extends Controller_Template{
             
   	    	// Set the config
             $this->config = Kohana::config('appconfig');
-  	    	$this->template->gacode = gacode;
+  	    	$this->template->gacode = $this->config->gacode;
   	    	
 			// Prepare for dynamic styles and scripts
 	  		$this->template->styles = array();
@@ -54,8 +53,11 @@ class Controller_Templates_Defaulttemplate extends Controller_Template{
 	public function after() {
 		if ($this->auto_render){
 			// Append site name to the title
-			$this->template->title.= $this->config->appendtitle;			
-		
+			$this->template->title.= $this->config->appendtotitle;			
+            
+            $styles = array();
+            $scripts = array();
+            
 			$this->template->styles = array_merge( $this->template->styles, $styles );
 			$this->template->scripts = array_merge( $this->template->scripts, $scripts );
 		}
