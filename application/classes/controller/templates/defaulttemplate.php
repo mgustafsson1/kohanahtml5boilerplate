@@ -24,11 +24,11 @@ class Controller_Templates_Defaulttemplate extends Controller_Template{
 		        
   	    if ($this->auto_render){
   	    	// Initialize empty values
-  	    	$this->template->title   = '';
+            $this->template->title   = '';
             $this->template->canonical = '';
-  	    	$this->template->content = '';
-  	    	$this->template->documentready = '';
-  	    	$this->template->metatags = array();
+            $this->template->content = '';
+            $this->template->documentready = '';
+            $this->template->metatags = array();
   	    	
             // Add robots index, follow to all pages
             $this->template->metatags['robots'] = 'index, follow';
